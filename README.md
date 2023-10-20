@@ -225,3 +225,28 @@ Note que el procedimiento incluye manejo de excepciones, en donde se invoca una 
 
 Esto nos permitira manejar la ocurrencia de que las credenciales de acceso sean inválidas. Cuando se intenta hacer la operacion de asignar un valor a la variable user. Note que el tipo de la variable user es Usuario.
 
+El manejo de excepciones lo continuaremos utilizando a lo largo del proyecto.
+
+La siguiente imagen muestra la ventana y los nombres de sus elementos en la propiedad Name.
+
+![imagen](/img/frmAutenticacion.png)
+
+Note que solo estan resaltados en texto de color rojo los controles que nos interesa modificar su propiedad Name.
+para consultar la lógica desarrollada en esta sección consulte este [archivo](/src/CapaPresentacion/frmAutenticacion.cs)
+
+
+
+### Usuario Admin
+
+![imagen](/img/frmTrabajadorAdmin.png)
+para consultar la lógica desarrollada en esta sección consulte este [archivo](/src/CapaPresentacion/frmTrabajadorAdmin.cs)
+
+
+
+
+
+
+### Usuario Normal
+
+![imagen](/img/frmTrababajadorUsuarioNormal.png)
+para consultar la lógica desarrollada en esta sección consulte este [archivo](/src/CapaPresentacion/frmTrabajadorUsuarioNormal.cs)
