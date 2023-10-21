@@ -18,7 +18,7 @@
         * [Autenticación de usuarios](#autenticación-de-usuarios)
         * [Usuario Admin](#usuario-admin)
         * [Usuario Normal](#usuario-normal)
-    
+
 # Introducción
 En el marco de la solicitud de realizar una prueba de nivel nacional, se nos ha solicitado dar solución a la siguiente situacion.
 
@@ -42,6 +42,7 @@ El usuario administrador, además de las operaciones del usuario normal, debe po
 En este documento explicaremos cuales fueron los mecanismos utilizados para dar solución a la problemática.
 
 # Desarrollo
+
 ## Arquitectura.
 
 
@@ -77,31 +78,31 @@ La capa de datos tiene el objetivo de proporcionar datos y manejar las estructur
 
 ### Clase Trabajador:
 ```csharp
-    public class Trabajador
+public class Trabajador
+{
+    public string Rut { get; set; }
+    public string Nombre { get; set; }
+    public string Direccion { get; set; }
+    public string Telefono { get; set; }
+    public string Afp { get; set; }
+    public string Salud { get; set; }
+    public int HorasTrabajadas { get; set; }
+    public int HorasExtra { get; set; }
+    public Trabajador(string rut, string nombre, string direccion, string telefono, string afp, string salud, int horasTrabajadas, int horasExtra)
     {
-        public string Rut { get; set; }
-        public string Nombre { get; set; }
-        public string Direccion { get; set; }
-        public string Telefono { get; set; }
-        public string Afp { get; set; }
-        public string Salud { get; set; }
-        public int HorasTrabajadas { get; set; }
-        public int HorasExtra { get; set; }
-        public Trabajador(string rut, string nombre, string direccion, string telefono, string afp, string salud, int horasTrabajadas, int horasExtra)
-        {
-            Rut = rut;
-            Nombre = nombre;
-            Direccion = direccion;
-            Telefono = telefono;
-            Afp = afp;
-            Salud = salud;
-            HorasTrabajadas = horasTrabajadas;
-            HorasExtra = horasExtra;
-        }
+        Rut = rut;
+        Nombre = nombre;
+        Direccion = direccion;
+        Telefono = telefono;
+        Afp = afp;
+        Salud = salud;
+        HorasTrabajadas = horasTrabajadas;
+        HorasExtra = horasExtra;
     }
+}
 ```
 
-También cuenta con un método tipo para generar trabajadores. En este caso genera valores para 5 trabajadores.
+También cuenta con un método tipo List para generar trabajadores. En este caso genera valores para 5 trabajadores.
 
 ```csharp
 public List<Trabajador> GenerarTrabajadores()
@@ -318,7 +319,6 @@ El formulario encargado de gestionar las acciones del usuario normal es el sigui
 
 De forma similar al formulario frmTrabajadorUsuarioNormal, este formulario tambien recibe por parámetro en su constructor la opción a ejecutar. 
 ```csharp
-
 public frmTrabajadorUsuarioNormal(string operacion)
 {
     InitializeComponent();
@@ -334,13 +334,29 @@ string operacion; //operaciones del crud
 int indice;
 ```
 Los eventos que se controlan en esta clase son los siguientes:
+
     frmTrabajadorUsuarioNormal_Load
     txtRut_Leave
     btnOperacion_Click
     btnCancelar_Click
-    btnCancelar_Click_1
     txtHorasTrabajadas_Leave
     txtHorasExtra_Leave
 
-
 para consultar la lógica desarrollada en esta sección consulte este [archivo](/src/CapaPresentacion/frmTrabajadorUsuarioNormal.cs)
+
+### Contenedor
+
+Para dar una mejor experiencia de usuario se ha decidido montar los formularios anteriores en un control de tipo Panel para poder utilizarlo de contenedor en conjunto con un control de tipo DataGridView. El diseño del formulario se ve reflejado en la siguiente imagen.
+
+![contenedor](/img/contenedor.png)
+
+Si observamos tenemos un control de tipo Menu Strip. que contiene dos menús. Las dos imagenes siguientes muestran los elementos de estos menús.
+
+![administradorMenu](/img/administradorMenu.png)
+![usuarioNormalMenu](/img/usuarioNormalMenu.png)
+
+la logica que se desarrolla en este formulario se encuentra en este [archivo](/src/CapaPresentacion/frmContenedor.cs)
+
+# Guia de uso
+
+En esta sección haremos un recorrido guiado por nuestra aplicación. 
