@@ -10,15 +10,19 @@
         * [Clase Trabajador](#clase-trabajador)
         * [Clase SistemaSalud y Clase SistemaPensiones](#clase-sistemasalud-y-clase-sistemapensiones)
         * [Clase Data](#clase-data)
+        * [Diagrama de clases](#diagrama-de-clases)
     * [Capa Negocios](#capa-negocios)
         * [Método Sueldo Bruto](#método-sueldo-bruto)
         * [Método DescuentoAfp](#método-descuentoafp)
         * [Método DescuentoSalud](#método-descuentosalud)
+        * [Diagrama de clases](#diagrama-de-clases-1)
     * [Capa Presentación](#capa-presentación)
         * [Autenticación de usuarios](#autenticación-de-usuarios)
         * [Usuario Admin](#usuario-admin)
         * [Usuario Normal](#usuario-normal)
         * [Contenedor](#contenedor)
+        * [Diagrama de clases](#diagrama-de-clases-2)
+
 * [Guia de uso](#guia-de-uso)
 
 # Introducción
@@ -150,6 +154,8 @@ Es una clase enfocada en la generación de datos necesarios para el funcionamien
     }
 ```
 
+### Diagrama de clases
+
 En el siguiente diagrama de clases podemos apreciar la estructura general de la capa de datos.
 
 ![diagrama de clases capa de datos](/img/diagrama_clases_CapaData.png)
@@ -236,6 +242,9 @@ public static decimal SueldoLiquido(int horasTrabajadas, int horasExtra, string 
             - (decimal)DescuentoSalud(sueldoBruto, sistemaSalud);
 }            
 ```
+
+### Diagrama de clases
+
 En el siguiente diagrama de clases podemos apreciar la estructura general de la capa negocios. Note que en esta capa se declaran también las excepciones personalizadas para manejar la ocurrencia de errores durante el cálculo de sueldos.
 ![diagrama de clases capa negocios](/img/diagrama_clases_CapaNegocios.png)
 
@@ -393,6 +402,8 @@ y se gestionan los siguientes eventos:
     btnRecargar_Click
     consultarTrabajadorToolStripMenuItem1_Click
     editarTrabajadorToolStripMenuItem_Click
+
+### Diagrama de clases
 
 El siguiente diagrama de clases muestra la estructura general de la capa de presentación.
 

@@ -95,6 +95,7 @@
     <EmbeddedResource Include="frmTrabajadorAdmin.resx">
       <DependentUpon>frmTrabajadorAdmin.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Diagrama de clases CapaPresentacion.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -12,6 +12,14 @@ namespace CapaPresentacion
             InitializeComponent();
         }
 
+        public frmContenedor frmContenedor
+        {
+            get => default(frmContenedor);
+            set
+            {
+            }
+        }
+
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             Usuario user;

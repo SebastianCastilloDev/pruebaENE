@@ -52,5 +52,8 @@
       <Name>CapaData</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="diagrama de clases CapaNegocios.cd" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -11,9 +11,7 @@ namespace CapaPresentacion
     {
         List<Trabajador> trabajadores;
         string operacion; //operaciones del crud
-
         int indice;
-
         public frmTrabajadorUsuarioNormal(string operacion)
         {
             InitializeComponent();
@@ -21,7 +19,6 @@ namespace CapaPresentacion
             CargarComboBoxs();
             trabajadores = Data.trabajadores;
         }
-
         private void frmTrabajadorUsuarioNormal_Load(object sender, EventArgs e)
         {
             if (operacion == "Consultar")
@@ -40,7 +37,6 @@ namespace CapaPresentacion
             lblSueldoBruto.Text = "";
             lblSueldoLiquido.Text = "";
         }
-
         private void txtRut_Leave(object sender, EventArgs e)
         {
             try
@@ -86,9 +82,6 @@ namespace CapaPresentacion
 
 
         }
-
-
-
         private void btnOperacion_Click(object sender, EventArgs e)
         {
             switch (operacion)
@@ -97,31 +90,20 @@ namespace CapaPresentacion
                 case "Actualizar": ActualizarTrabajador(); break;
             }
         }
-
         private void btnCancelar_Click(object sender, EventArgs e) { this.Close(); }
-
-      
-
-        
-
-
         private void btnCancelar_Click_1(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void txtHorasTrabajadas_Leave(object sender, EventArgs e)
         {
             LeaveHoras(txtHorasTrabajadas);
         }
-
         private void txtHorasExtra_Leave(object sender, EventArgs e)
         {
             LeaveHoras(txtHorasExtra);
         }
-
         private void ConsultarTrabajador() { CalcularSueldo(); }
-
         private void ActualizarTrabajador()
         {
             trabajadores[indice].HorasTrabajadas = Convert.ToInt32(txtHorasTrabajadas.Text);
@@ -137,7 +119,6 @@ namespace CapaPresentacion
                 if (txtRut.Text == trabajador.Rut) return true;
             return false;
         }
-
         private void CalcularSueldo()
         {
             try
@@ -186,14 +167,11 @@ namespace CapaPresentacion
                 MessageBox.Show("Escriba la cantidad de horas en un formato de número.", "Formato incorrecto.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
-
-
         private void CargarComboBoxs()
         {
             foreach (string afp in SistemaPensiones.afp) cbxAfp.Items.Add(afp);
             foreach (string salud in SistemaSalud.prevision) cbxSalud.Items.Add(salud);
         }
-
         private void LeaveHoras(TextBox textBox)
         {
             //valida si no se puede convertir a int
@@ -209,7 +187,6 @@ namespace CapaPresentacion
                 MessageBox.Show("Escriba un numero", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
         private void EliminarElementoLista(int indiceAEliminar)
         {
             trabajadores.RemoveAt(indiceAEliminar);
@@ -219,5 +196,3 @@ namespace CapaPresentacion
 
     }
 }
-
-

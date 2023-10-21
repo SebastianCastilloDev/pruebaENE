@@ -7,10 +7,8 @@ namespace CapaNegocios
         
         private static int valorHora = 5000;
         private static int valorExtra = 7000;
-        public static string afp;
-        public static string salud;
-
-
+        private static string afp;
+        private static string salud;
 
         public static int SueldoBruto(int horasTrabajadas, int horasExtra) => 
             horasTrabajadas * valorHora + horasExtra * valorExtra;
@@ -67,7 +65,5 @@ namespace CapaNegocios
             int sueldoBruto = SueldoBruto(horasTrabajadas, horasExtra);
             return (decimal)sueldoBruto - (decimal)DescuentoAfp(sueldoBruto, afp) - (decimal)DescuentoSalud(sueldoBruto, sistemaSalud);
         }
-
-
     }
 }

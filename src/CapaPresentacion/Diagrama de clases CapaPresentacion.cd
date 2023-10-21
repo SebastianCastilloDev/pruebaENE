@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="CapaPresentacion.Autenticacion">
+    <Position X="1" Y="3.25" Width="2" />
+    <Members>
+      <Field Name="components" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="label1" Hidden="true" />
+    </Members>
+    <AssociationLine Name="frmContenedor" Type="CapaPresentacion.frmContenedor" FixedFromPoint="true">
+      <Path>
+        <Point X="3" Y="4.875" />
+        <Point X="4.25" Y="4.875" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>IAgAAAEAACIAARAAAACACAgCAQAAAEAAAgAAAAAAAAA=</HashCode>
+      <FileName>frmAutenticacion.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="frmContenedor" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CapaPresentacion.frmContenedor">
+    <Position X="4.25" Y="0.5" Width="4" />
+    <Members>
+      <Field Name="components" Hidden="true" />
+      <Method Name="consultarTrabajadorToolStripMenuItem1_Click" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="label1" Hidden="true" />
+      <Field Name="label2" Hidden="true" />
+      <Field Name="label3" Hidden="true" />
+      <Field Name="menuStrip2" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AEABAgBgADIJAlAAaCTChQACEQKICCiCAAgAAEARSII=</HashCode>
+      <FileName>frmContenedor.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="frmTrabajadorUsuarioNormal" />
+      <Property Name="frmTrabajadorAdmin" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CapaPresentacion.frmTrabajadorAdmin">
+    <Position X="9.75" Y="0.5" Width="3" />
+    <Members>
+      <Field Name="components" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="label1" Hidden="true" />
+      <Field Name="label2" Hidden="true" />
+      <Field Name="label3" Hidden="true" />
+      <Field Name="label4" Hidden="true" />
+      <Field Name="label5" Hidden="true" />
+      <Field Name="label6" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAIQAQBAACAJKJAEBwCAAAkCACBEAIBgQAhAAAABAgA=</HashCode>
+      <FileName>frmTrabajadorAdmin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CapaPresentacion.frmTrabajadorUsuarioNormal">
+    <Position X="13.25" Y="2.75" Width="3" />
+    <Members>
+      <Method Name="btnCancelar_Click_1" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Field Name="groupBox1" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="label1" Hidden="true" />
+      <Field Name="label2" Hidden="true" />
+      <Field Name="label3" Hidden="true" />
+      <Field Name="label4" Hidden="true" />
+      <Field Name="label5" Hidden="true" />
+      <Field Name="label6" Hidden="true" />
+      <Field Name="label7" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAIYBAAAAGAEQZAEQQLAAAAiAABAQgBAQChBAAABSgA=</HashCode>
+      <FileName>frmTrabajadorUsuarioNormal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

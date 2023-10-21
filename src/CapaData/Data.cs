@@ -14,6 +14,22 @@ namespace CapaData
         };
 
         public static List<Trabajador> trabajadores = new Trabajador().GenerarTrabajadores();
+
+        public static Trabajador Trabajador
+        {
+            get => default(Trabajador);
+            set
+            {
+            }
+        }
+
+        public static Usuario Usuario
+        {
+            get => default(Usuario);
+            set
+            {
+            }
+        }
     }
 
 

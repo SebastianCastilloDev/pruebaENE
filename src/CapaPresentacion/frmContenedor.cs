@@ -15,7 +15,6 @@ namespace CapaPresentacion
     public partial class frmContenedor : Form
     {
         private List<string> crud = new List<string> { "Agregar", "Consultar","Actualizar","Eliminar" };
-
         private List<Trabajador> trabajadores;
         private static Usuario usuarioActual;
         private static ToolStripMenuItem menuActivo = null;
@@ -25,7 +24,22 @@ namespace CapaPresentacion
         {
             usuarioActual = usuario;
             InitializeComponent();
-            //EsteFormulario = this;
+        }
+
+        public frmTrabajadorUsuarioNormal frmTrabajadorUsuarioNormal
+        {
+            get => default(frmTrabajadorUsuarioNormal);
+            set
+            {
+            }
+        }
+
+        public frmTrabajadorAdmin frmTrabajadorAdmin
+        {
+            get => default(frmTrabajadorAdmin);
+            set
+            {
+            }
         }
 
         private void frmContenedor_Load(object sender, EventArgs e)
