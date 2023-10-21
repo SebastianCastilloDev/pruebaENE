@@ -2,23 +2,23 @@
 
 # Contenidos
 
-[Introducción](#introducción)
-[Desarrollo](#desarrollo)
-[Arquitectura](#arquitectura)
-[Capa de datos](#capa-de-datos)
-[Clase Usuario](#clase-usuario)
-[Clase Trabajador](#clase-trabajador)
-[Clase SistemaSalud y Clase SistemaPensiones](#clase-sistemasalud-y-clase-sistemapensiones)
-[Clase Data](#clase-data)
-[Capa Negocios](#capa-negocios)
-[Método Sueldo Bruto](#método-sueldo-bruto)
-[Método DescuentoAfp](#método-descuentoafp)
-[Método DescuentoSalud](#método-descuentosalud)
-[Capa Presentación](#capa-presentación)
-[Autenticación de usuarios](#autenticación-de-usuarios)
-[Usuario Admin](#usuario-admin)
-[Usuario Normal](#usuario-normal)
-
+* [Introducción](#introducción)
+* [Desarrollo](#desarrollo)
+    * [Arquitectura](#arquitectura)
+    * [Capa de datos](#capa-de-datos)
+        * [Clase Usuario](#clase-usuario)
+        * [Clase Trabajador](#clase-trabajador)
+        * [Clase SistemaSalud y Clase SistemaPensiones](#clase-sistemasalud-y-clase-sistemapensiones)
+        * [Clase Data](#clase-data)
+    * [Capa Negocios](#capa-negocios)
+        * [Método Sueldo Bruto](#método-sueldo-bruto)
+        * [Método DescuentoAfp](#método-descuentoafp)
+        * [Método DescuentoSalud](#método-descuentosalud)
+    * [Capa Presentación](#capa-presentación)
+        * [Autenticación de usuarios](#autenticación-de-usuarios)
+        * [Usuario Admin](#usuario-admin)
+        * [Usuario Normal](#usuario-normal)
+    
 # Introducción
 En el marco de la solicitud de realizar una prueba de nivel nacional, se nos ha solicitado dar solución a la siguiente situacion.
 
@@ -167,73 +167,67 @@ public static int SueldoBruto(int horasTrabajadas, int horasExtra) {
     int sueldoBruto = horasTrabajadas * valorHora + horasExtra * valorExtra;
     return sueldoBruto;
 } 
-            
 ```
 ### Método DescuentoAfp
 ```csharp
 public static decimal DescuentoAfp(int sueldoBruto, string afp)
-        {
-            double descuento;
-            switch (afp.ToLower())
-            {
-                case "cuprum":
-                    descuento = 0.07;
-                    break;
-                case "modelo":
-                    descuento = 0.09;
-                    break;
-                case "capital":
-                    descuento = 0.12;
-                    break;
-                case "provida":
-                    descuento = 0.13;
-                    break;
-                default:
-                    throw new ArgumentException("Argumento incorrecto");
-            }
-
-            return sueldoBruto * (decimal)descuento;
-        }            
+{
+    double descuento;
+    switch (afp.ToLower())
+    {
+        case "cuprum":
+            descuento = 0.07;
+            break;
+        case "modelo":
+            descuento = 0.09;
+            break;
+        case "capital":
+            descuento = 0.12;
+            break;
+        case "provida":
+            descuento = 0.13;
+            break;
+        default:
+            throw new ArgumentException("Argumento incorrecto");
+    }
+    return sueldoBruto * (decimal)descuento;
+}            
 ```
 ### Método DescuentoSalud
-
 ```csharp
 public static decimal DescuentoSalud(int sueldoBruto, string sistemaSalud)
-        {
-            double descuento;
-            switch (sistemaSalud.ToLower())
-            {
-                case "fonasa":
-                    descuento = 0.12;
-                    break;
-                case "consalud":
-                    descuento = 0.13;
-                    break;
-                case "masvida":
-                    descuento = 0.14;
-                    break;
-                case "banmedica":
-                    descuento = 0.15;
-                    break;
-                default:
-                    throw new ArgumentException("Argumento incorrecto");
-            }
-
-            return sueldoBruto * (decimal)descuento;
-        }
-
-            
+{
+    double descuento;
+    switch (sistemaSalud.ToLower())
+    {
+        case "fonasa":
+            descuento = 0.12;
+            break;
+        case "consalud":
+            descuento = 0.13;
+            break;
+        case "masvida":
+            descuento = 0.14;
+            break;
+        case "banmedica":
+            descuento = 0.15;
+            break;
+        default:
+            throw new ArgumentException("Argumento incorrecto");
+    }
+    return sueldoBruto * (decimal)descuento;
+}
 ```
 ### Método SueldoLiquido
 
 ```csharp
 public static decimal SueldoLiquido(int horasTrabajadas, int horasExtra, string afp, string sistemaSalud)
-        {
-            int sueldoBruto = SueldoBruto(horasTrabajadas, horasExtra);
-            return  (decimal)sueldoBruto 
-                    - (decimal)DescuentoAfp(sueldoBruto, afp) 
-                    - (decimal)DescuentoSalud(sueldoBruto, sistemaSalud);
-        }            
+{
+    int sueldoBruto = SueldoBruto(horasTrabajadas, horasExtra);
+    return  (decimal)sueldoBruto 
+            - (decimal)DescuentoAfp(sueldoBruto, afp) 
+            - (decimal)DescuentoSalud(sueldoBruto, sistemaSalud);
+}            
 ```
 
 Puede consultar el código de esta sección en este [enlace](/src/CapaNegocios/Sueldo.cs)
