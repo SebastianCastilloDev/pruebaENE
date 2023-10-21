@@ -1,5 +1,24 @@
 # Informe prueba ENE
 
+# Contenidos
+
+[Introducción](#introducción)
+[Desarrollo](#desarrollo)
+[Arquitectura](#arquitectura)
+[Capa de datos](#capa-de-datos)
+[Clase Usuario](#clase-usuario)
+[Clase Trabajador](#clase-trabajador)
+[Clase SistemaSalud y Clase SistemaPensiones](#clase-sistemasalud-y-clase-sistemapensiones)
+[Clase Data](#clase-data)
+[Capa Negocios](#capa-negocios)
+[Método Sueldo Bruto](#método-sueldo-bruto)
+[Método DescuentoAfp](#método-descuentoafp)
+[Método DescuentoSalud](#método-descuentosalud)
+[Capa Presentación](#capa-presentación)
+[Autenticación de usuarios](#autenticación-de-usuarios)
+[Usuario Admin](#usuario-admin)
+[Usuario Normal](#usuario-normal)
+
 # Introducción
 En el marco de la solicitud de realizar una prueba de nivel nacional, se nos ha solicitado dar solución a la siguiente situacion.
 
@@ -261,21 +280,73 @@ La siguiente imagen muestra la ventana y los nombres de sus elementos en la prop
 Note que solo estan resaltados en texto de color rojo los controles que nos interesa modificar su propiedad Name.
 para consultar la lógica desarrollada en esta sección consulte este [archivo](/src/CapaPresentacion/frmAutenticacion.cs)
 
-
-
 ### Usuario Admin
-
-Recordemos que existen 4 operaciones del usuario administrador que deseamos manejar. Estas opciones son 
-
 ![imagen](/img/frmTrabajadorAdmin.png)
+Recordemos que existen 4 operaciones del usuario administrador que deseamos manejar. Estas opciones son las operaciones del CRUD.
+
+* Crear
+* Consultar 
+* Actualizar
+* Eliminar
+
+El formulario frmTrabajadorAdmin, es el encargado de gestionar esta tarea. Para ello hemos creado el siguiente constructor, que acepta por parámetro una operación.
+```csharp
+public frmTrabajadorAdmin(string crud)
+{
+    operacion = crud;
+    InitializeComponent();
+}
+```
+
+Los eventos que controlaremos en este formulario son los siguientes:
+
+    btnGuardar_Click
+    cbxAfp_SelectedIndexChanged
+    cbxSalud_SelectedIndexChanged
+    btnCancelar_Click
+    frmTrabajador_Load
+    txtRut_Leave
+
+Dentro de la clase frmTrabajadorAdmin hemos creado los siguientes campos.
+```csharp
+string afp;
+string salud;
+List<Trabajador> trabajadoresList = Data.trabajadores;
+string operacion; //operaciones del crud
+int indiceAEliminar;
+int indiceAActualizar;
+```
 para consultar la lógica desarrollada en esta sección consulte este [archivo](/src/CapaPresentacion/frmTrabajadorAdmin.cs)
 
-
-
-
-
-
 ### Usuario Normal
-
+El formulario encargado de gestionar las acciones del usuario normal es el siguiente.
 ![imagen](/img/frmTrababajadorUsuarioNormal.png)
+
+De forma similar al formulario frmTrabajadorUsuarioNormal, este formulario tambien recibe por parámetro en su constructor la opción a ejecutar. 
+```csharp
+
+public frmTrabajadorUsuarioNormal(string operacion)
+{
+    InitializeComponent();
+    this.operacion = operacion;
+    CargarComboBoxs();
+    trabajadores = Data.trabajadores;
+}
+```
+Dentro de la clase frmTrabajadorAdmin hemos creado los siguientes campos.
+```csharp
+List<Trabajador> trabajadoresList = Data.trabajadores;
+string operacion; //operaciones del crud
+int indice;
+```
+Los eventos que se controlan en esta clase son los siguientes:
+    frmTrabajadorUsuarioNormal_Load
+    txtRut_Leave
+    btnOperacion_Click
+    btnCancelar_Click
+    btnCancelar_Click_1
+    txtHorasTrabajadas_Leave
+    txtHorasExtra_Leave
+
+
 para consultar la lógica desarrollada en esta sección consulte este [archivo](/src/CapaPresentacion/frmTrabajadorUsuarioNormal.cs)
