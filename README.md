@@ -96,6 +96,8 @@ public List<Trabajador> GenerarTrabajadores()
 } 
 ```
 
+### Clase SistemaSalud y Clase SistemaPensiones
+
 Finalmente contamos con 2 clases estáticas, que nos proveerán los sistemas de salud y de pensiones que tenemos disponibles.
 
 ```csharp
@@ -109,13 +111,29 @@ public static class SistemaPensiones
 }
 ```
 
+### Clase Data
+
+Es una clase enfocada en la generación de datos necesarios para el funcionamiento de la aplicación.
+```csharp
+    public static class Data
+    {
+        public static List<Usuario> usuarios = new List<Usuario>
+        {
+            new Usuario("Usuario1", "abcd","Admin"),
+            new Usuario("Usuario2", "1234","Usuario"),
+            new Usuario("Usuario3","pass","Usuario")
+        };
+
+        public static List<Trabajador> trabajadores = new Trabajador().GenerarTrabajadores();
+    }
+```
+
+Puede consultar el código esta capa en el siguiente [enlace](/src/CapaData/Data.cs)
 ## Capa negocios.
 Se encarga de gestionar el cálculo de valores de sueldo bruto y sueldo líquido. Se ha configurado como una clase estática.
 
-Contiene sólo una clase llamada **Sueldo**
+Contiene sólo una clase llamada **Sueldo**.
 Cuenta con 4 parámetros y con 4 métodos que reciben parámetros de acuerdo al cálculo que se desea efectuar, los cuales se detallarán a continuación.
-
-
 
 ```csharp
 private static int valorHora = 5000;
@@ -123,7 +141,8 @@ private static int valorExtra = 7000;
 private static string afp;
 private static string salud;
 ```
-
+Esta clase cuenta con 4 métodos que implementan las reglas de negocio que se nos han indicado para el cálculo de sueldos.
+### Método Sueldo Bruto
 ```csharp
 public static int SueldoBruto(int horasTrabajadas, int horasExtra) {
     int sueldoBruto = horasTrabajadas * valorHora + horasExtra * valorExtra;
@@ -131,6 +150,7 @@ public static int SueldoBruto(int horasTrabajadas, int horasExtra) {
 } 
             
 ```
+### Método DescuentoAfp
 ```csharp
 public static decimal DescuentoAfp(int sueldoBruto, string afp)
         {
@@ -156,6 +176,8 @@ public static decimal DescuentoAfp(int sueldoBruto, string afp)
             return sueldoBruto * (decimal)descuento;
         }            
 ```
+### Método DescuentoSalud
+
 ```csharp
 public static decimal DescuentoSalud(int sueldoBruto, string sistemaSalud)
         {
@@ -183,6 +205,8 @@ public static decimal DescuentoSalud(int sueldoBruto, string sistemaSalud)
 
             
 ```
+### Método SueldoLiquido
+
 ```csharp
 public static decimal SueldoLiquido(int horasTrabajadas, int horasExtra, string afp, string sistemaSalud)
         {
@@ -192,6 +216,9 @@ public static decimal SueldoLiquido(int horasTrabajadas, int horasExtra, string 
                     - (decimal)DescuentoSalud(sueldoBruto, sistemaSalud);
         }            
 ```
+
+Puede consultar el código de esta sección en este [enlace](/src/CapaNegocios/Sueldo.cs)
+Respecto de excepciones personalizadas desarrolladas para esta seccion puede consultar este [enlace](/src/CapaNegocios/Excepciones.cs)
 
 ## Capa Presentación.
 
@@ -237,6 +264,8 @@ para consultar la lógica desarrollada en esta sección consulte este [archivo](
 
 
 ### Usuario Admin
+
+Recordemos que existen 4 operaciones del usuario administrador que deseamos manejar. Estas opciones son 
 
 ![imagen](/img/frmTrabajadorAdmin.png)
 para consultar la lógica desarrollada en esta sección consulte este [archivo](/src/CapaPresentacion/frmTrabajadorAdmin.cs)
