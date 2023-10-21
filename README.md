@@ -150,7 +150,11 @@ Es una clase enfocada en la generación de datos necesarios para el funcionamien
     }
 ```
 
-Puede consultar el código esta capa en el siguiente [enlace](/src/CapaData/Data.cs)
+En el siguiente diagrama de clases podemos apreciar la estructura general de la capa de datos.
+
+![diagrama de clases capa de datos](/img/diagrama_clases_CapaData.png)
+
+Puede consultar el código de la capa de datos revise el siguiente [enlace](/src/CapaData/Data.cs)
 ## Capa negocios.
 Se encarga de gestionar el cálculo de valores de sueldo bruto y sueldo líquido. Se ha configurado como una clase estática.
 
@@ -232,13 +236,17 @@ public static decimal SueldoLiquido(int horasTrabajadas, int horasExtra, string 
             - (decimal)DescuentoSalud(sueldoBruto, sistemaSalud);
 }            
 ```
+En el siguiente diagrama de clases podemos apreciar la estructura general de la capa negocios. Note que en esta capa se declaran también las excepciones personalizadas para manejar la ocurrencia de errores durante el cálculo de sueldos.
+![diagrama de clases capa negocios](/img/diagrama_clases_CapaNegocios.png)
 
 Puede consultar el código de esta sección en este [enlace](/src/CapaNegocios/Sueldo.cs)
 Respecto de excepciones personalizadas desarrolladas para esta seccion puede consultar este [enlace](/src/CapaNegocios/Excepciones.cs)
 
+
+
 ## Capa Presentación.
 
-La capa presentación se encarga de gestionar las interacciones con el usuario. Recordemos que tenemos dos tipos de usuarios, el usuario normal y el administrador. El ***usuario normal***, se encarga de calcular los sueldos para los empleados ingresando el numero de *horas trabajadas*, el número de *horas extra*, el *sistema de salud* y de *previsión* que tendrá el trabajador. Por otro lado, el ***usuario administrador*** se encargará de *agregar*, *consultar*, *actualizar* y *eliminar* trabajadores. También **hemos supuesto que el usuario administrador tendrá acceso a toda la aplicación**. 
+La capa presentación se encarga de gestionar las interacciones con el usuario. Recordemos que tenemos dos tipos de usuarios, el usuario normal y el administrador. El ***usuario normal***, se encarga de calcular los sueldos para los emptrabaleados ingresando el numero de *horas trabajadas*, el número de *horas extra*, el *sistema de salud* y de *previsión* que tendrá el trabajador. Por otro lado, el ***usuario administrador*** se encargará de *agregar*, *consultar*, *actualizar* y *eliminar* trabajadores. También **hemos supuesto que el usuario administrador tendrá acceso a toda la aplicación**. 
 
 Además debemos considerar la operación de autenticación que se debe llevar a cabo al momento de inicializar la aplicación. Comenzaremos nuestra exposición a partir de este punto.
 
@@ -385,6 +393,10 @@ y se gestionan los siguientes eventos:
     btnRecargar_Click
     consultarTrabajadorToolStripMenuItem1_Click
     editarTrabajadorToolStripMenuItem_Click
+
+El siguiente diagrama de clases muestra la estructura general de la capa de presentación.
+
+![diagrama de clases capa presentacion](/img/diagrama_clases_CapaPresentacion.png)
 
 la logica que se desarrolla en este formulario se encuentra en este [archivo](/src/CapaPresentacion/frmContenedor.cs)
 
