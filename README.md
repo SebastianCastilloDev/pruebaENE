@@ -18,6 +18,8 @@
         * [Autenticación de usuarios](#autenticación-de-usuarios)
         * [Usuario Admin](#usuario-admin)
         * [Usuario Normal](#usuario-normal)
+        * [Contenedor](#contenedor)
+* [Guia de uso](#guia-de-uso)
 
 # Introducción
 En el marco de la solicitud de realizar una prueba de nivel nacional, se nos ha solicitado dar solución a la siguiente situacion.
@@ -354,6 +356,35 @@ Si observamos tenemos un control de tipo Menu Strip. que contiene dos menús. La
 
 ![administradorMenu](/img/administradorMenu.png)
 ![usuarioNormalMenu](/img/usuarioNormalMenu.png)
+
+Cuenta con los siguientes campos:
+
+    private List<string> crud = new List<string> { "Agregar", "Consultar","Actualizar","Eliminar" };
+    private List<Trabajador> trabajadores;
+    private static Usuario usuarioActual;
+    private static ToolStripMenuItem menuActivo = null;
+    private static Form formularioActivo = null;
+
+tiene el siguiente constructor: El parametro usuario es enviado desde el formulario de autenticación.
+```csharp
+public frmContenedor(Usuario usuario)
+{
+    usuarioActual = usuario;
+    InitializeComponent();
+}
+```
+
+y se gestionan los siguientes eventos:
+
+    frmContenedor_Load
+    salirToolStripMenuItem_Click
+    agregarTrabajadorToolStripMenuItem_Click
+    consultarTrabajadorToolStripMenuItem_Click
+    actualizarTrabajadorToolStripMenuItem_Click
+    eliminarTrabajadorToolStripMenuItem_Click
+    btnRecargar_Click
+    consultarTrabajadorToolStripMenuItem1_Click
+    editarTrabajadorToolStripMenuItem_Click
 
 la logica que se desarrolla en este formulario se encuentra en este [archivo](/src/CapaPresentacion/frmContenedor.cs)
 
