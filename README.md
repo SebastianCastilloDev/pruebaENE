@@ -22,11 +22,10 @@
         * [Usuario Normal](#usuario-normal)
         * [Contenedor](#contenedor)
         * [Diagrama de clases](#diagrama-de-clases-2)
-
-* [Guia de uso](#guia-de-uso)
+* [Conclusión]
 
 # Introducción
-En el marco de la solicitud de realizar una prueba de nivel nacional, se nos ha solicitado dar solución a la siguiente situacion.
+En el marco de la solicitud de realizar una prueba de nivel nacional, se nos ha solicitado dar solución a la siguiente situación.
 
 Una empresa desea confeccionar un software que permita algunas operaciones de acuerdo a dos distintos roles.
 
@@ -54,7 +53,7 @@ En este documento explicaremos cuales fueron los mecanismos utilizados para dar 
 
 La arquitectura escogida consta de 3 capas, a saber, **CapaData**, **CapaNegocios**, **CapaPresentación**. Esta es una convención ampliamente adoptada por la comunidad de desarrolladores y tiene como fin, favorecer la mantenibilidad y la escalabilidad de la aplicación. Cada una de estas capas tiene una responsabilidad definida.
 
-* **CapaData**: Se encarga de generar, almacenar y gestionar la información que alimenta a la aplicación. Para la generacion de información se utilizan arrays y listas.
+* **CapaData**: Se encarga de generar, almacenar y gestionar la información que alimenta a la aplicación. Para la generación de información se utilizan arrays y listas.
 
 * **CapaNegocios**: Se encarga de manejar la lógica propia del cálculo de sueldos.
 
@@ -109,7 +108,6 @@ public class Trabajador
 ```
 
 También cuenta con un método tipo List para generar trabajadores. En este caso genera valores para 5 trabajadores.
-
 ```csharp
 public List<Trabajador> GenerarTrabajadores()
 {
@@ -248,14 +246,14 @@ public static decimal SueldoLiquido(int horasTrabajadas, int horasExtra, string 
 En el siguiente diagrama de clases podemos apreciar la estructura general de la capa negocios. Note que en esta capa se declaran también las excepciones personalizadas para manejar la ocurrencia de errores durante el cálculo de sueldos.
 ![diagrama de clases capa negocios](/img/diagrama_clases_CapaNegocios.png)
 
-Puede consultar el código de esta sección en este [enlace](/src/CapaNegocios/Sueldo.cs)
-Respecto de excepciones personalizadas desarrolladas para esta seccion puede consultar este [enlace](/src/CapaNegocios/Excepciones.cs)
+Puede consultar el código de esta sección en este [enlace](/src/CapaNegocios/Sueldo.cs)  
+Respecto de excepciones personalizadas desarrolladas para esta sección puede consultar este [enlace](/src/CapaNegocios/Excepciones.cs)
 
 
 
 ## Capa Presentación.
 
-La capa presentación se encarga de gestionar las interacciones con el usuario. Recordemos que tenemos dos tipos de usuarios, el usuario normal y el administrador. El ***usuario normal***, se encarga de calcular los sueldos para los emptrabaleados ingresando el numero de *horas trabajadas*, el número de *horas extra*, el *sistema de salud* y de *previsión* que tendrá el trabajador. Por otro lado, el ***usuario administrador*** se encargará de *agregar*, *consultar*, *actualizar* y *eliminar* trabajadores. También **hemos supuesto que el usuario administrador tendrá acceso a toda la aplicación**. 
+La capa presentación se encarga de gestionar las interacciones con el usuario. Recordemos que tenemos dos tipos de usuarios, el usuario normal y el administrador. El ***usuario normal***, se encarga de calcular los sueldos para los trabajadores ingresando el numero de *horas trabajadas*, el número de *horas extra*, el *sistema de salud* y de *previsión* que tendrá el trabajador. Por otro lado, el ***usuario administrador*** se encargará de *agregar*, *consultar*, *actualizar* y *eliminar* trabajadores. También **hemos supuesto que el usuario administrador tendrá acceso a toda la aplicación**. 
 
 Además debemos considerar la operación de autenticación que se debe llevar a cabo al momento de inicializar la aplicación. Comenzaremos nuestra exposición a partir de este punto.
 
@@ -283,7 +281,7 @@ private void btnIngresar_Click(object sender, EventArgs e)
 
 Note que el procedimiento incluye manejo de excepciones, en donde se invoca una instancia de la clase de excepción InvalidCredentialException.
 
-Esto nos permitira manejar la ocurrencia de que las credenciales de acceso sean inválidas. Cuando se intenta hacer la operacion de asignar un valor a la variable user. Note que el tipo de la variable user es Usuario.
+Esto nos permitirá manejar la ocurrencia de que las credenciales de acceso sean inválidas. Cuando se intenta hacer la operacion de asignar un valor a la variable user. Note que el tipo de la variable user es Usuario.
 
 El manejo de excepciones lo continuaremos utilizando a lo largo del proyecto.
 
@@ -369,7 +367,7 @@ Para dar una mejor experiencia de usuario se ha decidido montar los formularios 
 
 ![contenedor](/img/contenedor.png)
 
-Si observamos tenemos un control de tipo Menu Strip. que contiene dos menús. Las dos imagenes siguientes muestran los elementos de estos menús.
+Si observamos tenemos un control de tipo Menu Strip. que contiene dos menús. Las dos imágenes siguientes muestran los elementos de estos menús.
 
 ![administradorMenu](/img/administradorMenu.png)
 ![usuarioNormalMenu](/img/usuarioNormalMenu.png)
@@ -382,7 +380,7 @@ Cuenta con los siguientes campos:
     private static ToolStripMenuItem menuActivo = null;
     private static Form formularioActivo = null;
 
-tiene el siguiente constructor: El parametro usuario es enviado desde el formulario de autenticación.
+Tiene el siguiente constructor: El parámetro usuario es enviado desde el formulario de autenticación.
 ```csharp
 public frmContenedor(Usuario usuario)
 {
@@ -391,15 +389,15 @@ public frmContenedor(Usuario usuario)
 }
 ```
 
-y se gestionan los siguientes eventos:
+Y se gestionan los siguientes eventos:
 
     frmContenedor_Load
+    btnRecargar_Click
     salirToolStripMenuItem_Click
     agregarTrabajadorToolStripMenuItem_Click
     consultarTrabajadorToolStripMenuItem_Click
     actualizarTrabajadorToolStripMenuItem_Click
     eliminarTrabajadorToolStripMenuItem_Click
-    btnRecargar_Click
     consultarTrabajadorToolStripMenuItem1_Click
     editarTrabajadorToolStripMenuItem_Click
 
@@ -409,8 +407,12 @@ El siguiente diagrama de clases muestra la estructura general de la capa de pres
 
 ![diagrama de clases capa presentacion](/img/diagrama_clases_CapaPresentacion.png)
 
-la logica que se desarrolla en este formulario se encuentra en este [archivo](/src/CapaPresentacion/frmContenedor.cs)
+la lógica que se desarrolla en este formulario se encuentra en este [archivo](/src/CapaPresentacion/frmContenedor.cs)
 
-# Guia de uso
+# Conclusión.
 
-En esta sección haremos un recorrido guiado por nuestra aplicación. 
+Se ha desarrollado una aplicación Windows Forms, con el lenguaje de programación C#. Para ello se han utilizado conceptos de programación orientada a objetos. También hemos utilizado el diseñador de formularios de Visual Studio para conseguir el producto final.
+
+La aplicación básicamente realiza las operaciones CRUD con los registros de un grupo de trabajadores. Para cada trabajador se va a requerir calcular su sueldo bruto y su sueldo líquido. Para ello almacenamos los siguientes datos: horas trabajadas, horas extra, previsión de salud, administradora de pensiones. Estos elementos se han configurado como clases dentro del proyecto.
+
+La aplicación administra la interacción con el usuario desde un grupo de ventanas conocidos como Windows Forms. En este grupo, se verificará que tipo de dato se está ingresando y que estos datos sean ingresados en forma correcta, para este efecto, se ha implementado el control de excepciones. 
